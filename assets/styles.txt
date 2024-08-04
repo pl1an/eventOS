@@ -1,0 +1,1 @@
+hey! this file contains colors and styles in general for Event OS
