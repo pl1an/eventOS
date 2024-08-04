@@ -26,7 +26,8 @@ const style_sheet = StyleSheet.create({
         paddingTop: 5,
         width:200,
         height:150,
-        borderWidth:1,
+        borderRightWidth:1,
+        borderBottomWidth:1,
         borderColor:"black"
     },
     number_text:{
