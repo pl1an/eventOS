@@ -23,8 +23,6 @@ export default function Index() {
   const tempmonthdata = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
   return ( 
-    <ReactNativeZoomableView minZoom={0.1}>
-      <Mainpage></Mainpage>
-    </ReactNativeZoomableView>
+    <Mainpage></Mainpage>
   );
 }
