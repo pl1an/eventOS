@@ -1,13 +1,11 @@
 import {StatusBar, FlatList, Text, View } from "react-native";
-import { ReactNativeZoomableView } from '@openspacelabs/react-native-zoomable-view';
-import { Day } from "./components/day";
-import { Month } from "./components/month";
 import { Mainpage } from "./pages/mainpage";
+import themes from "./styles/themes";
 
 export default function Index() {
   return (
-    <View style={{backgroundColor:"black", flex:1}}>
-      <StatusBar barStyle={"light-content"} backgroundColor={"black"} translucent={true}></StatusBar>
+    <View style={{backgroundColor:themes.colors.background, flex:1}}>
+      <StatusBar barStyle={"light-content"} backgroundColor={"#000000"} translucent={true}></StatusBar>
       <Mainpage></Mainpage>
     </View>
   );

@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, View, Text, ColorValue, FlatList } from "react-native";
 import { Day } from "./day";
 import { dayformat } from "../pages/mainpage";
+import themes from "../styles/themes";
 
 type monthprops = {
     monthname:string,
@@ -37,14 +38,14 @@ const style_sheet = StyleSheet.create({
         height:845,
         margin:50,
         borderWidth:1,
-        borderColor:"white"
+        borderColor:themes.colors.primary,
     },
     monthtext:{
         fontSize:30,
         padding:10,
         borderWidth:1,
-        borderColor:"white",
-        color:"white"
+        borderColor:themes.colors.primary,
+        color:themes.colors.primary,
     },
     monthrow:{
         flexDirection:"row"
@@ -53,7 +54,7 @@ const style_sheet = StyleSheet.create({
         flexDirection:"row",
         justifyContent:"center",
         alignItems:"center",
-        backgroundColor:"white"
+        backgroundColor:themes.colors.primary,
     },
     weektext:{
         flex:1,
