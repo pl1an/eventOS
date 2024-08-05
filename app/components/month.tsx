@@ -23,8 +23,8 @@ export const Month = ({monthname, days}:monthprops) => {
             <FlatList data={days} 
             renderItem={({item})=><FlatList style={style_sheet.monthrow} data={item} 
                 renderItem={({item}) => <Day day_number={item} day_data={[]}></Day>}
-                keyExtractor={item=>JSON.stringify(item)}></FlatList>}> 
-            keyExtractor={(item1)=> JSON.stringify(item1[0])}</FlatList>
+                keyExtractor={item=>JSON.stringify(item)}></FlatList>} 
+            keyExtractor={(item1)=> JSON.stringify(item1[0])}></FlatList>
         </View>
     )
 }
