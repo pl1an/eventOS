@@ -1,7 +1,37 @@
 import React from "react";
 import { Month } from "../components/month";
 import { ReactNativeZoomableView } from "@openspacelabs/react-native-zoomable-view";
-import { View, FlatList, StyleSheet } from "react-native";
+import { View, FlatList, StyleSheet, ColorValue } from "react-native";
+
+
+type eventformat = {
+    eventname:string,
+    detailedinfo:string[],
+    tag:{
+        color: ColorValue | string,
+        name: string
+    },
+    time:{
+        hours:number,
+        minutes:number
+    },
+    date:{
+        year:number,
+        month:number,
+        day:number
+    },
+    repeattime:number
+}
+type dayformat = {
+    events:eventformat[],
+    placeholderevents:[eventformat, eventformat, eventformat]
+}
+type maindataformat = {
+    dates_currentyear:number[][][],
+    monthnames:string[],
+    monthevents:dayformat[]
+}
+
 
 export const Mainpage = () => {
     function getDates_currentyear() {
@@ -34,33 +64,33 @@ export const Mainpage = () => {
         "July", "August", "September", "October", "November", "December"
     ];
 
-    const maindata = {
+    const maindata:maindataformat = {
         dates_currentyear:getDates_currentyear(),
-        month_names:months,
-        eventinfo:[]
+        monthnames:["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+        monthevents:[]
     }
 
     return (
         <ReactNativeZoomableView minZoom={0.1} initialZoom={0.1} bindToBorders={false}>
             <View style={style_sheet.yearrows}>
-                <Month monthname={maindata.month_names[0]} days={maindata.dates_currentyear[0]}></Month>
-                <Month monthname={maindata.month_names[1]} days={maindata.dates_currentyear[1]}></Month>
-                <Month monthname={maindata.month_names[2]} days={maindata.dates_currentyear[2]}></Month>
+                <Month monthname={maindata.monthnames[0]} days={maindata.dates_currentyear[0]}></Month>
+                <Month monthname={maindata.monthnames[1]} days={maindata.dates_currentyear[1]}></Month>
+                <Month monthname={maindata.monthnames[2]} days={maindata.dates_currentyear[2]}></Month>
             </View>
             <View style={style_sheet.yearrows}>
-                <Month monthname={maindata.month_names[3]} days={maindata.dates_currentyear[3]}></Month>
-                <Month monthname={maindata.month_names[4]} days={maindata.dates_currentyear[4]}></Month>
-                <Month monthname={maindata.month_names[5]} days={maindata.dates_currentyear[5]}></Month>
+                <Month monthname={maindata.monthnames[3]} days={maindata.dates_currentyear[3]}></Month>
+                <Month monthname={maindata.monthnames[4]} days={maindata.dates_currentyear[4]}></Month>
+                <Month monthname={maindata.monthnames[5]} days={maindata.dates_currentyear[5]}></Month>
             </View>
             <View style={style_sheet.yearrows}>
-                <Month monthname={maindata.month_names[6]} days={maindata.dates_currentyear[6]}></Month>
-                <Month monthname={maindata.month_names[7]} days={maindata.dates_currentyear[7]}></Month>
-                <Month monthname={maindata.month_names[8]} days={maindata.dates_currentyear[8]}></Month>
+                <Month monthname={maindata.monthnames[6]} days={maindata.dates_currentyear[6]}></Month>
+                <Month monthname={maindata.monthnames[7]} days={maindata.dates_currentyear[7]}></Month>
+                <Month monthname={maindata.monthnames[8]} days={maindata.dates_currentyear[8]}></Month>
             </View>
             <View style={style_sheet.yearrows}>
-                <Month monthname={maindata.month_names[9]} days={maindata.dates_currentyear[9]}></Month>
-                <Month monthname={maindata.month_names[10]} days={maindata.dates_currentyear[10]}></Month>
-                <Month monthname={maindata.month_names[11]} days={maindata.dates_currentyear[11]}></Month>
+                <Month monthname={maindata.monthnames[9]} days={maindata.dates_currentyear[9]}></Month>
+                <Month monthname={maindata.monthnames[10]} days={maindata.dates_currentyear[10]}></Month>
+                <Month monthname={maindata.monthnames[11]} days={maindata.dates_currentyear[11]}></Month>
             </View>
         </ReactNativeZoomableView>
     );
