@@ -1,13 +1,15 @@
 import React from "react";
 import { StyleSheet, View, Text, ColorValue, FlatList } from "react-native";
 import { Day } from "./day";
+import { dayformat } from "../pages/mainpage";
 
 type monthprops = {
     monthname:string,
-    days:number[][]
+    days:number[][],
+    monthdata:dayformat[]
 }
 
-export const Month = ({monthname, days}:monthprops) => {
+export const Month = ({monthname, days, monthdata}:monthprops) => {
     return (
         <View style={style_sheet.container}>
             <Text style={style_sheet.monthtext}>{monthname}</Text>
@@ -22,7 +24,7 @@ export const Month = ({monthname, days}:monthprops) => {
             </View>
             <FlatList data={days} 
             renderItem={({item})=><FlatList style={style_sheet.monthrow} data={item} 
-                renderItem={({item}) => <Day day_number={item} day_data={[]}></Day>}
+                renderItem={({item, index}:{item:any, index:number}) => <Day day_number={item} daydata={monthdata[index]}></Day>}
                 keyExtractor={item=>JSON.stringify(item)}></FlatList>} 
             keyExtractor={(item1)=> JSON.stringify(item1[0])}></FlatList>
         </View>
@@ -35,11 +37,14 @@ const style_sheet = StyleSheet.create({
         height:845,
         margin:50,
         borderWidth:1,
+        borderColor:"white"
     },
     monthtext:{
         fontSize:30,
         padding:10,
         borderWidth:1,
+        borderColor:"white",
+        color:"white"
     },
     monthrow:{
         flexDirection:"row"
@@ -48,6 +53,7 @@ const style_sheet = StyleSheet.create({
         flexDirection:"row",
         justifyContent:"center",
         alignItems:"center",
+        backgroundColor:"white"
     },
     weektext:{
         flex:1,
