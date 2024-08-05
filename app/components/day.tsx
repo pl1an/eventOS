@@ -7,9 +7,12 @@ type dayprops = {
     day_data:{eventname:string, tagcolor:ColorValue | string}[]
 }
 export const Day = ({day_number, day_data}:dayprops) => {
+    let validday = true;
+    if(day_number<0) validday = false;
+
     return (
         <TouchableOpacity style={style_sheet.container}>
-            <Text style={style_sheet.number_text}>{day_number}</Text>
+            {validday && (<Text style={style_sheet.number_text}>{day_number}</Text>)}
             <FlatList data={day_data} 
             renderItem ={({item}) => <Dayitem dayevent={item.eventname} tagcolor={item.tagcolor} ></Dayitem>}
             keyExtractor={item => item.eventname}

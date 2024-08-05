@@ -32,7 +32,7 @@ export const Month = ({monthname, days}:monthprops) => {
 const style_sheet = StyleSheet.create({
     container:{
         width:1400,
-        height:817,
+        height:845,
         margin:50,
         borderWidth:1,
     },
@@ -51,7 +51,7 @@ const style_sheet = StyleSheet.create({
     },
     weektext:{
         flex:1,
-        borderWidth:1,
+        borderBottomWidth:1,
         padding:5,
         paddingLeft:10,
     }
