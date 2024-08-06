@@ -7,10 +7,11 @@ import themes from "../styles/themes";
 type monthprops = {
     monthname:string,
     days:number[][],
-    monthdata:dayformat[]
+    monthdata:dayformat[],
+    navi:undefined
 }
 
-export const Month = ({monthname, days, monthdata}:monthprops) => {
+export const Month = ({monthname, days, monthdata, navi}:monthprops) => {
     return (
         <View style={style_sheet.container}>
             <Text style={style_sheet.monthtext}>{monthname}</Text>
@@ -24,8 +25,8 @@ export const Month = ({monthname, days, monthdata}:monthprops) => {
                 <Text style={style_sheet.weektext}>saturday</Text>
             </View>
             <FlatList data={days} 
-            renderItem={({item})=><FlatList style={style_sheet.monthrow} data={item} 
-                renderItem={({item, index}:{item:any, index:number}) => <Day day_number={item} daydata={monthdata[index]}></Day>}
+            renderItem={({item:Outeritem, index:Outerindex})=><FlatList style={style_sheet.monthrow} data={Outeritem} 
+                renderItem={({item, index}:{item:any, index:number}) => <Day day_number={item} daydata={monthdata[index]} navigation={navi}></Day>}
                 keyExtractor={item=>JSON.stringify(item)}></FlatList>} 
             keyExtractor={(item1)=> JSON.stringify(item1[0])}></FlatList>
         </View>
@@ -35,7 +36,7 @@ export const Month = ({monthname, days, monthdata}:monthprops) => {
 const style_sheet = StyleSheet.create({
     container:{
         width:1400,
-        height:845,
+        height:995,
         margin:50,
         borderWidth:1,
         borderColor:themes.colors.primary,

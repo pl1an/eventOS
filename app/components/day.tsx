@@ -6,14 +6,15 @@ import themes from "../styles/themes";
 
 type dayprops = {
     day_number:number,
-    daydata:dayformat
+    daydata:dayformat,
+    navigation:undefined
 }
-export const Day = ({day_number, daydata}:dayprops) => {
+export const Day = ({day_number, daydata, navigation}:dayprops) => {
     let validday = true;
     if(day_number<0) validday = false;
 
     return (
-        <TouchableOpacity style={style_sheet.container}>
+        <TouchableOpacity style={style_sheet.container} onPress={() => navigation.navigate("dayinfo", {daydata:daydata})}>
             {validday && (<Text style={style_sheet.number_text}>{day_number}</Text>)}
             {validday && (<FlatList data={daydata.placeholderevents} 
             renderItem ={({item}) => <Dayitem dayevent={item.eventname} tagcolor={item.tag.color} ></Dayitem>}
