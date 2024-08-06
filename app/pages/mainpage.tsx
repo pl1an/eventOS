@@ -24,7 +24,9 @@ export type eventformat = {
 }
 export type dayformat = {
     events:eventformat[],
-    placeholderevents:[eventformat, eventformat, eventformat] | eventformat[]
+    placeholderevents:[eventformat, eventformat, eventformat] | eventformat[],
+    parentmonth:string,
+    daynumber:number,
 }
 export type maindataformat = {
     dates_currentyear:number[][][],
@@ -59,7 +61,7 @@ export const Mainpage = () => {
         return daysInYear;
     }
 
-    function fill_default(daynumber:number[][][]){
+    function fill_default(daynumber:number[][][], monthnames:string[]){
         let data:dayformat[][] = [];
         for(let i=0; i<12; i++){
             data.push([]);
@@ -70,7 +72,9 @@ export const Mainpage = () => {
             for(let ii=0; ii<monthsize; ii++){
                 data[i].push({
                     events:[],
-                    placeholderevents:[]
+                    placeholderevents:[],
+                    parentmonth:monthnames[i],
+                    daynumber:ii,
                 })
             }
         }
@@ -81,7 +85,7 @@ export const Mainpage = () => {
     const maindata:maindataformat = {
         dates_currentyear:getDates_currentyear(),
         monthnames:["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
-        monthevents:fill_default(getDates_currentyear())
+        monthevents:fill_default(getDates_currentyear(), ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"])
     }
 
     return (
