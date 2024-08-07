@@ -1,17 +1,17 @@
 import React from "react";
 import { StyleSheet, View, Text, ColorValue, FlatList } from "react-native";
 import { Day } from "./day";
-import { dayformat } from "../pages/mainpage";
+import { dayformat } from "..";
 import themes from "../styles/themes";
 
 type monthprops = {
     monthname:string,
     days:number[][],
     monthdata:dayformat[],
-    navi:undefined
+    setscreenfunction:Function,
 }
 
-export const Month = ({monthname, days, monthdata, navi}:monthprops) => {
+export const Month = ({monthname, days, monthdata, setscreenfunction}:monthprops) => {
     return (
         <View style={style_sheet.container}>
             <Text style={style_sheet.monthtext}>{monthname}</Text>
@@ -26,7 +26,7 @@ export const Month = ({monthname, days, monthdata, navi}:monthprops) => {
             </View>
             <FlatList data={days} 
             renderItem={({item:Outeritem, index:Outerindex})=><FlatList style={style_sheet.monthrow} data={Outeritem} 
-                renderItem={({item, index}:{item:any, index:number}) => <Day day_number={item} daydata={monthdata[index]} navigation={navi}></Day>}
+                renderItem={({item, index}:{item:any, index:number}) => <Day day_number={item} daydata={monthdata[index]} setscreenfunction={setscreenfunction}></Day>}
                 keyExtractor={item=>JSON.stringify(item)}></FlatList>} 
             keyExtractor={(item1)=> JSON.stringify(item1[0])}></FlatList>
         </View>
@@ -62,5 +62,6 @@ const style_sheet = StyleSheet.create({
         borderBottomWidth:1,
         padding:5,
         paddingLeft:10,
+        color:themes.colors.background,
     }
 })

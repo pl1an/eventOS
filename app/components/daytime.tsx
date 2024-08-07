@@ -1,7 +1,6 @@
 import React from "react";
-import { Text, TouchableOpacity } from "react-native";
-import { eventformat } from "../pages/mainpage";
-import { FlatList } from "react-native-gesture-handler";
+import { Text, TouchableOpacity, FlatList} from "react-native";
+import { eventformat } from "..";
 
 type daytimeprops = {
     event:eventformat[],
