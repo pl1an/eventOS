@@ -78,11 +78,45 @@ export default function Index() {
                 if(ii+1>7*(weekcounter)) {weekcounter++;}
                 //console.log(monthsize, ii, i, weekcounter-1, ii-7*(weekcounter-1), daynumber[i][weekcounter-1][ii-7*(weekcounter-1)])
                 data[i].push({
-                    events:[],
+                    events:[{
+                        eventname:"hello world",
+                        detailedinfo:[],
+                        tag:{
+                            color:"green",
+                            name:"code"
+                        },
+                        time:{
+                            hours:6,
+                            minutes:30
+                        },
+                        date:{
+                            year:2024,
+                            month:5,
+                            day:21
+                        },
+                        repeattime:0
+                    },{
+                        eventname:"test",
+                        detailedinfo:[],
+                        tag:{
+                            color:"blue",
+                            name:"code"
+                        },
+                        time:{
+                            hours:6,
+                            minutes:30
+                        },
+                        date:{
+                            year:2024,
+                            month:5,
+                            day:21
+                        },
+                        repeattime:0
+                    }],
                     placeholderevents:[],
                     parentmonth:monthnames[i],
                     daynumber:daynumber[i][weekcounter-1][ii-7*(weekcounter-1)],
-                })
+                });
             }
         }
         return data;
