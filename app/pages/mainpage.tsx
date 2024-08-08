@@ -9,7 +9,7 @@ import { maindataformat } from "..";
 export const Mainpage = ({maindata, setscreenfunction}:{maindata:maindataformat, setscreenfunction:Function}) => {
     return (
       <View style={{backgroundColor:themes.colors.background, flex:1}}>
-            <ReactNativeZoomableView minZoom={0.1} initialZoom={0.1} bindToBorders={false}>
+            <ReactNativeZoomableView minZoom={0} initialZoom={0.1} bindToBorders={false}>
                 <View style={style_sheet.yearrows}>
                     <Month monthname={maindata.monthnames[0]} days={maindata.dates_currentyear[0]} monthdata={maindata.monthevents[0]} setscreenfunction={setscreenfunction}></Month>
                     <Month monthname={maindata.monthnames[1]} days={maindata.dates_currentyear[1]} monthdata={maindata.monthevents[1]} setscreenfunction={setscreenfunction}></Month>

@@ -1,8 +1,9 @@
-import {StatusBar, ColorValue} from "react-native";
+import {StatusBar, ColorValue, View, TouchableOpacity} from "react-native";
 import themes from "./styles/themes";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Mainpage } from "./pages/mainpage";
 import { Dayinfo } from "./pages/dayinfo";
+
 
 export type eventformat = {
     eventname:string,
@@ -133,14 +134,19 @@ export default function Index() {
     setShowDayinfo(dayinfo)
   }
 
+  useEffect(()=>{
+    StatusBar.setBackgroundColor(themes.colors.background);
+    StatusBar.setBarStyle("light-content");
+  })
+
   return (
-    <>
+    <View style={{backgroundColor:themes.colors.background, flex:1}}>
       <StatusBar barStyle={"light-content"} backgroundColor={themes.colors.background} translucent={true}></StatusBar>
       <>
         {showMain && (<Mainpage maindata={maindata} setscreenfunction={setScreen}></Mainpage>)}
         {showDayinfo && (<Dayinfo maindata={maindata} setscreenfunction={setScreen}></Dayinfo>)}
       </>
-    </>
+    </View>
   );
 
 }

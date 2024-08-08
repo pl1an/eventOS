@@ -57,7 +57,7 @@ const style_sheet = StyleSheet.create({
         color:themes.colors.primary,
     },
     backbutton:{
-        marginLeft:5,
+        marginLeft:15,
     },
     backbutton_text:{
         fontSize:30,

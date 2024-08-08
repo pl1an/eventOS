@@ -26,12 +26,20 @@ export const Daytime = ({event, time}:daytimeprops) => {
     const style_sheet = StyleSheet.create({
         container:{
             padding:10,
+            marginLeft:10,
+            marginRight:10,
             marginBottom:10,
             flexDirection:"row",
             alignItems:"center",
             borderWidth:1,
             borderRadius:7,
             borderColor:themes.colors.primary,
+        },
+        timetext:{
+            color:themes.colors.primary,
+            textAlign:"center",
+            fontWeight:"bold",
+
         },
         text:{
             color:themes.colors.primary,
@@ -40,15 +48,15 @@ export const Daytime = ({event, time}:daytimeprops) => {
     })
 
     return (
-        <View style={style_sheet.container}>
-            <Text style={style_sheet.text}>{render_hours(time.hours)}:{render_minutes(time.minutes)}</Text>
+        <TouchableOpacity style={style_sheet.container} onPress={()=>console.log("pressed it")}>
+            <Text style={style_sheet.timetext}>{render_hours(time.hours)}:{render_minutes(time.minutes)}</Text>
             <FlatList style={{flex:1, paddingTop:10, marginLeft:10}}data={showevent} 
                 renderItem={({item})=><TouchableOpacity 
-                    style={{padding:3, marginLeft:10, marginBottom:10, justifyContent:"center", alignItems:"center", backgroundColor:item.tag.color, borderRadius:15,}}>
+                    style={{padding:7, marginLeft:10, marginBottom:10, justifyContent:"center", alignItems:"center", backgroundColor:item.tag.color, borderRadius:15,}}>
                         <Text style={style_sheet.text}>{item.eventname}</Text>
                     </TouchableOpacity>}
                 keyExtractor={item=>item.eventname}>
             </FlatList>
-        </View>
+        </TouchableOpacity>
     )
 }
