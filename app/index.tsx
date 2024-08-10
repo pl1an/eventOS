@@ -3,6 +3,7 @@ import themes from "./styles/themes";
 import { useEffect, useState } from "react";
 import { Mainpage } from "./pages/mainpage";
 import { Dayinfo } from "./pages/dayinfo";
+import { Eventinfo } from "./pages/eventinfo";
 
 
 export type eventformat = {
@@ -39,6 +40,7 @@ export type maindataformat = {
 export default function Index() {
   const [showMain, setShowMain] = useState(true);
   const [showDayinfo, setShowDayinfo] = useState(false);
+  const [showEventinfo, setShowEventifo] = useState(false);
 
   function getDates_currentyear() {
           const currentYear = new Date().getFullYear();
@@ -81,7 +83,7 @@ export default function Index() {
                 data[i].push({
                     events:[{
                         eventname:"hello world",
-                        detailedinfo:[],
+                        detailedinfo:["hello world info", "a bit more of info about hello world"],
                         tag:{
                             color:"green",
                             name:"code"
@@ -129,24 +131,26 @@ export default function Index() {
         monthevents:fill_default(getDates_currentyear(), ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"])
     }
 
-  function setScreen(main:boolean, dayinfo:boolean){
-    setShowMain(main);
-    setShowDayinfo(dayinfo)
-  }
+    function setScreen(main:boolean=false, dayinfo:boolean=false, eventinfo:boolean=false){
+        setShowMain(main);
+        setShowDayinfo(dayinfo);
+        setShowEventifo(eventinfo);
+    }
 
-  useEffect(()=>{
-    StatusBar.setBackgroundColor(themes.colors.background);
-    StatusBar.setBarStyle("light-content");
-  })
+    useEffect(()=>{
+        StatusBar.setBackgroundColor(themes.colors.background);
+        StatusBar.setBarStyle("light-content");
+    })
 
-  return (
-    <View style={{backgroundColor:themes.colors.background, flex:1}}>
-      <StatusBar barStyle={"light-content"} backgroundColor={themes.colors.background} translucent={true}></StatusBar>
-      <>
-        {showMain && (<Mainpage maindata={maindata} setscreenfunction={setScreen}></Mainpage>)}
-        {showDayinfo && (<Dayinfo maindata={maindata} setscreenfunction={setScreen}></Dayinfo>)}
-      </>
-    </View>
-  );
+    return (
+        <View style={{backgroundColor:themes.colors.background, flex:1}}>
+        <StatusBar barStyle={"light-content"} backgroundColor={themes.colors.background} translucent={true}></StatusBar>
+        <>
+            {showMain && (<Mainpage maindata={maindata} setscreenfunction={setScreen}></Mainpage>)}
+            {showDayinfo && (<Dayinfo maindata={maindata} setscreenfunction={setScreen}></Dayinfo>)}
+            {showEventinfo && (<Eventinfo maindata={maindata} setScreenfunction={setScreen}></Eventinfo>)}
+        </>
+        </View>
+    );
 
 }

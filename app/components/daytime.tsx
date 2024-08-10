@@ -6,9 +6,10 @@ import themes from "../styles/themes";
 type daytimeprops = {
     event:eventformat[],
     time:eventformat["time"],
+    setScreenfunction:Function,
 }
 
-export const Daytime = ({event, time}:daytimeprops) => {
+export const Daytime = ({setScreenfunction, event, time}:daytimeprops) => {
     let showevent = []
     for(let i=0; i<event.length; i++){
         if(event[i].time.hours == time.hours && event[i].time.minutes == time.minutes) {showevent.push(event[i])}
@@ -33,7 +34,7 @@ export const Daytime = ({event, time}:daytimeprops) => {
             alignItems:"center",
             borderWidth:1,
             borderRadius:7,
-            borderColor:themes.colors.primary,
+            borderColor:themes.colors.secondary,
         },
         timetext:{
             color:themes.colors.primary,
@@ -51,7 +52,8 @@ export const Daytime = ({event, time}:daytimeprops) => {
         <TouchableOpacity style={style_sheet.container} onPress={()=>console.log("pressed it")}>
             <Text style={style_sheet.timetext}>{render_hours(time.hours)}:{render_minutes(time.minutes)}</Text>
             <FlatList style={{flex:1, paddingTop:10, marginLeft:10}}data={showevent} 
-                renderItem={({item})=><TouchableOpacity 
+                renderItem={({item})=><TouchableOpacity
+                    onPress={()=>setScreenfunction(false, false, true)} 
                     style={{padding:7, marginLeft:10, marginBottom:10, justifyContent:"center", alignItems:"center", backgroundColor:item.tag.color, borderRadius:15,}}>
                         <Text style={style_sheet.text}>{item.eventname}</Text>
                     </TouchableOpacity>}

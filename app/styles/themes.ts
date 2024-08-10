@@ -5,7 +5,9 @@
 
 export default {
     colors:{
-        background:"#0F0F0F",
-        primary:"white"
+        background:"#1B1422",
+        primary:"white",
+        secondary:"grey",
+        tagbackground:"grey",
     }
 }

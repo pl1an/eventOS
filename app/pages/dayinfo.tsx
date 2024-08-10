@@ -34,7 +34,7 @@ export const Dayinfo = ({maindata, setscreenfunction}:dayinfoprops) => {
                 <Text style={style_sheet.title}>{maindata.monthevents[dayindex[0]][dayindex[1]].parentmonth} {maindata.monthevents[dayindex[0]][dayindex[1]].daynumber}</Text>
             </View>
             <FlatList data={timelist} style={{marginBottom:20}}
-            renderItem={({item})=><Daytime time={item} event={maindata.monthevents[dayindex[0]][dayindex[1]].events}></Daytime>}
+            renderItem={({item})=><Daytime setScreenfunction={setscreenfunction} time={item} event={maindata.monthevents[dayindex[0]][dayindex[1]].events}></Daytime>}
             keyExtractor={item=>(JSON.stringify(item.hours)+":"+JSON.stringify(item.minutes))}></FlatList>
         </View>
     )
